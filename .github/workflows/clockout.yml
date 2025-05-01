@@ -1,0 +1,25 @@
+name: Auto Clock Out
+
+on:
+  schedule:
+    - cron: '0 14 * * 0-4'  # (UTC) == Runs at 5:00 PM BH Time (UTC+3:00)
+  workflow_dispatch:      # Manual trigger
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Run Python script
+        run: python clockout.py
+        
