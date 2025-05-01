@@ -1,9 +1,12 @@
 import requests
 import datetime
+import os
 
-# Read token from file
-with open('token.txt', 'r') as f:
-    bearer_token = f.read().strip()
+# Read token from file -- Old usage
+# with open('token.txt', 'r') as f:
+#    bearer_token = f.read().strip()
+
+bearer_token = os.getenv("KEKA_TOKEN")
 
 # Set the URL
 url = "https://maveric.keka.com/k/attendance/api/mytime/attendance/webclockin"
