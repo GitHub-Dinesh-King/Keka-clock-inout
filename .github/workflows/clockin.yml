@@ -2,7 +2,7 @@ name: Auto Clock In
 
 on:
   schedule:
-    - cron: '30 16 * * 0-4'  # Runs at 9:30 AM IST (UTC+5:30)
+    - cron: '0 4 * * 0-4'  # Runs at 9:00 AM IST (UTC+5:30)
   workflow_dispatch:      # Manual trigger
 
 jobs:
