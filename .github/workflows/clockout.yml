@@ -2,7 +2,7 @@ name: Auto Clock Out
 
 on:
   schedule:
-    - cron: '20 20 * * 0-4'  # (UTC) == Runs at 5:00 PM BH Time (UTC+3:00)
+    - cron: '0 7 * * *'  # (UTC) == Runs at 5:00 PM BH Time (UTC+3:00)
   workflow_dispatch:      # Manual trigger
 
 jobs:
