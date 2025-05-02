@@ -4,8 +4,8 @@ import os
 import json
 
 # Read token from file -- Old usage
-with open("token.txt", "r") as f:
-   bearer_token = f.read().strip()
+#with open("token.txt", "r") as f:
+#   bearer_token = f.read().strip()
 
 # bearer_token = os.getenv("KEKA_TOKEN")
 
