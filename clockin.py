@@ -1,9 +1,6 @@
 import requests
 import datetime
-
-def get_token():
-    with open('token.txt', 'r') as f:
-        return f.read().strip()
+import os
 
 # Function to send Telegram notification
 def send_telegram_notification(message):
@@ -25,7 +22,7 @@ def send_telegram_notification(message):
 
 
 def main():
-    token = get_token()
+    token = os.getenv("KEKA_TOKEN")
 
     url = "https://maveric.keka.com/k/attendance/api/mytime/attendance/webclockin"
     headers = {
