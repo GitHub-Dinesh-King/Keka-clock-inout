@@ -27,3 +27,5 @@ jobs:
         run: python clockin.py
         env:
           KEKA_TOKEN: ${{secrets.KEKA_TOKEN}}
+          TELEGRAM_BOT_TOKEN: ${{secrets.TELEGRAM_BOT_TOKEN}}
+          TELEGRAM_CHAT_ID: ${{secrets.TELEGRAM_CHAT_ID}}
