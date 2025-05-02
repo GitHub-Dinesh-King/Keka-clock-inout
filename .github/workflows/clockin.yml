@@ -23,5 +23,7 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Run Python script
+      - name: Run Clockin script
         run: python clockin.py
+        env:
+          KEKA_TOKEN: ${{secrets.KEKA_TOKEN}}
