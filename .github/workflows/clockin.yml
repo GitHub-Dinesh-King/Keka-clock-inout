@@ -2,7 +2,7 @@ name: Auto Clock In
 
 on:
   schedule:
-    - cron: '46 14 * * *'  # (UTC) == Runs at 9:00 AM BH Time (UTC+3:00)
+    - cron: '02 15 * * *'  # (UTC) == Runs at 9:00 AM BH Time (UTC+3:00)
   workflow_dispatch:      # Manual trigger
 
 jobs:
