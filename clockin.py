@@ -11,18 +11,18 @@ def main():
     url = "https://maveric.keka.com/k/attendance/api/mytime/attendance/webclockin"
     headers = {
         "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
-        "Accept": "application/json"
+        "Content-Type": "application/json",
+        "Accept": "application/json",
         "User-Agent": "Mozilla/5.0"
     }
 
     current_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
     payload = {
-        "timestamp": current_time
-        "attendanceLogSource": 1
-        "locationAddress": None
-        "manualClockinType": 1
-        "note": ""
+        "timestamp": current_time,
+        "attendanceLogSource": 1,
+        "locationAddress": None,
+        "manualClockinType": 1,
+        "note": "",
         "originalPunchStatus": 0
     }
 
