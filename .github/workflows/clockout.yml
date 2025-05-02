@@ -2,7 +2,7 @@ name: Auto Clock Out
 
 on:
   schedule:
-    - cron: '30 15 * * 0-4'  # (UTC) == Runs at 5:00 PM BH Time (UTC+3:00)
+    - cron: '30 15 * * 0-4'  # (UTC) == Runs at 6:30 PM BH Time (UTC+3:00)
   workflow_dispatch:      # Manual trigger
 
 jobs:
@@ -23,6 +23,9 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Run Python script
+      - name: Run Clockout script
         run: python clockout.py
-        
+        env:
+          KEKA_TOKEN: ${{secrets.KEKA_TOKEN}}
+          TELEGRAM_BOT_TOKEN: ${{secrets.TELEGRAM_BOT_TOKEN}}
+          TELEGRAM_CHAT_ID: ${{secrets.TELEGRAM_CHAT_ID}}
