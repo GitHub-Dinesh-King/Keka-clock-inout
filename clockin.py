@@ -61,10 +61,10 @@ def main():
     # Check the response status and send Telegram notification
     if response.status_code == 200:
         print("Clock-in successful!")
-        send_telegram_notification(':white_check_mark: Clock-in successful!')  # Send success notification
+        send_telegram_notification('✅ Clock-in successful!')  # Send success notification
     else:
         print(f"Clock-in failed!")
-        send_telegram_notification(':x: Clock-in failed!')  # Send failure notification
+        send_telegram_notification('❌ Clock-in failed!')  # Send failure notification
 
 
 
