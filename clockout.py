@@ -62,6 +62,9 @@ def main():
     if response.status_code == 200:
         print("Clock-out successful!")
         send_telegram_notification('✅ Clock-out successful!')  # Send success notification
+    elif response.status_code == 401:
+        print(f"Token Expired - Clock-out failed!")
+        send_telegram_notification('🔒 Keka Token Expired!')  # Send keka token expired notification
     else:
         print(f"Clock-out failed!")
         send_telegram_notification('❌ Clock-out failed!')  # Send failure notification
