@@ -2,16 +2,25 @@ import requests
 import datetime
 import os
 
-def get_token():
+# Function to call Secret_keys
+def get_keka_token():
     return os.getenv('KEKA_TOKEN')
 
+def get_telegram_bot_token():
+    return os.getenv('TELEGRAM_BOT_TOKEN')
+
+def get_telegram_chat_id():
+    return os.getenv('TELEGRAM_CHAT_ID')
+    
 # Function to send Telegram notification
 def send_telegram_notification(message):
-    bot_token = '7617784862:AAEFIF4eqIWcySITc_DPLNjvcUmll01A_is'  # Telegram bot token
-    chat_id = '1332307993'
-    url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+    
+    telegram_bot_token = get_telegram_bot_token()
+    telegram_chat_id = get_telegram_chat_id()
+    
+    url = f'https://api.telegram.org/bot{telegram_bot_token}/sendMessage'
     payload = {
-        'chat_id': chat_id,
+        'chat_id': telegram_chat_id,
         'text': message
     }
 
@@ -25,11 +34,11 @@ def send_telegram_notification(message):
 
 
 def main():
-    token = get_token()
+    keka_token = get_keka_token()
 
     url = "https://maveric.keka.com/k/attendance/api/mytime/attendance/webclockin"
     headers = {
-        "Authorization": f"Bearer {token}",
+        "Authorization": f"Bearer {keka_token}",
         "Content-Type": "application/json",
         "Accept": "application/json",
         "User-Agent": "Mozilla/5.0"
