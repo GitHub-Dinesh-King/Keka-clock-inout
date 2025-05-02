@@ -2,6 +2,9 @@ import requests
 import datetime
 import os
 
+def get_token():
+    return os.getenv('KEKA_TOKEN')
+
 # Function to send Telegram notification
 def send_telegram_notification(message):
     bot_token = '7617784862:AAEFIF4eqIWcySITc_DPLNjvcUmll01A_is'  # Telegram bot token
@@ -22,7 +25,7 @@ def send_telegram_notification(message):
 
 
 def main():
-    token = os.getenv("KEKA_TOKEN")
+    token = get_token()
 
     url = "https://maveric.keka.com/k/attendance/api/mytime/attendance/webclockin"
     headers = {
