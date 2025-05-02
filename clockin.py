@@ -51,7 +51,7 @@ def main():
         "locationAddress": None,
         "manualClockinType": 1,
         "note": "",
-        "originalPunchStatus": 0
+        "originalPunchStatus": 2
     }
 
     response = requests.post(url, headers=headers, json=payload)
