@@ -11,6 +11,9 @@ def get_telegram_bot_token():
 
 def get_telegram_chat_id():
     return os.getenv('TELEGRAM_CHAT_ID')
+
+def get_telegram_username():
+    return os.getenv('TELEGRAM_USERNAME')
     
 # Function to send Telegram notification
 def send_telegram_notification(message):
@@ -31,7 +34,21 @@ def send_telegram_notification(message):
     else:
         print(f"Failed to send notification. Status code: {response.status_code}")
 
-
+def make_phone_call():
+    username = get_telegram_username()
+    cc = "Keka+Token+Expired". #A Telegram Msg if call is Missed or Rejected   
+    call_url = (
+        f"http://api.callmebot.com/start.php?"
+        f"user={username}&text=Hi+Boss+the+Keka+Token+is+Expired&lang=en-US-Standard-A&rpt=1&cc={cc}&timeout=30"
+    )
+    
+    response = requests.get(call_url)
+    print(f"Telegram Call Response:", response.text)
+    try:
+        print(f"Telegram Call Response:", response.status_code)
+    except Exception as e:
+        print(f"Unable to get the Status code of Telegram Call Response")
+        
 
 def main():
     keka_token = get_keka_token()
@@ -65,6 +82,7 @@ def main():
     elif response.status_code == 401:
         print(f"Token Expired - Clock-out failed!")
         send_telegram_notification('🔒 Keka Token Expired!')  # Send keka token expired notification
+        make_phone_call()
     else:
         print(f"Clock-out failed!")
         send_telegram_notification('❌ Clock-out failed!')  # Send failure notification
