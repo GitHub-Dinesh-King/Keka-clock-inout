@@ -36,7 +36,7 @@ def send_telegram_notification(message):
 
 def make_phone_call():
     username = get_telegram_username()
-    cc = "Keka+Token+Expired". #A Telegram Msg if call is Missed or Rejected   
+    cc = "Keka+Token+Expired" #Telegram Message if call is Missed or Rejected   
     call_url = (
         f"http://api.callmebot.com/start.php?"
         f"user={username}&text=Hi+Boss+the+Keka+Token+is+Expired&lang=en-US-Standard-A&rpt=1&cc={cc}&timeout=30"
