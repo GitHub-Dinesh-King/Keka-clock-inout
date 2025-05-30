@@ -11,7 +11,8 @@ def get_telegram_bot_token():
 
 def get_telegram_chat_id():
     return os.getenv('TELEGRAM_CHAT_ID')
-def get_telegram_usetname():
+
+def get_telegram_username():
     return os.getenv('TELEGRAM_USERNAME')
     
 # Function to send Telegram notification
@@ -40,6 +41,7 @@ def make_phone_call():
         f"http://api.callmebot.com/start.php?"
         f"user={username}&text=Hi+Boss+the+Keka+Token+is+Expired&lang=en-US-Standard-A&rpt=1&cc={cc}&timeout=30"
     )
+    
     response = requests.get(call_url)
     print(f"Telegram Call Response:", response.text)
     try:
