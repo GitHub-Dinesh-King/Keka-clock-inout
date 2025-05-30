@@ -12,9 +12,6 @@ def get_telegram_bot_token():
 def get_telegram_chat_id():
     return os.getenv('TELEGRAM_CHAT_ID')
 
-def get_telegram_username():
-    return os.getenv('TELEGRAM_USERNAME')
-    
 # Function to send Telegram notification
 def send_telegram_notification(message):
     
@@ -35,7 +32,7 @@ def send_telegram_notification(message):
         print(f"Failed to send notification. Status code: {response.status_code}")
 
 def make_phone_call():
-    username = get_telegram_username()
+    username = "@thesunlord"
     cc = "Keka+Token+Expired" #Telegram Message if call is Missed or Rejected   
     call_url = (
         f"http://api.callmebot.com/start.php?"
