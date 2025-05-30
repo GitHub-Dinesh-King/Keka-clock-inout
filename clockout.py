@@ -43,6 +43,7 @@ def make_phone_call():
     )
     
     response = requests.get(call_url)
+    print(f"Calling URL:", call_url)
     print(f"Telegram Call Response:", response.text)
     try:
         print(f"Telegram Call Response:", response.status_code)
