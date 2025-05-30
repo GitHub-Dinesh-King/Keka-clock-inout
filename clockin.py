@@ -35,20 +35,21 @@ def send_telegram_notification(message):
         print(f"Failed to send notification. Status code: {response.status_code}")
 
 def make_phone_call():
-    username = get_telegram_username()
-    cc = "Keka+Token+Expired". #Telegram Message if call is Missed or Rejected   
+    username = "@thesunlord"
+    cc = "Keka+Token+Expired" #Telegram Message if call is Missed or Rejected   
     call_url = (
         f"http://api.callmebot.com/start.php?"
         f"user={username}&text=Hi+Boss+the+Keka+Token+is+Expired&lang=en-US-Standard-A&rpt=1&cc={cc}&timeout=30"
     )
     
     response = requests.get(call_url)
+    print(f"Calling URL:", call_url)
     print(f"Telegram Call Response:", response.text)
     try:
         print(f"Telegram Call Response:", response.status_code)
     except Exception as e:
         print(f"Unable to get the Status code of Telegram Call Response")
-
+        
 def main():
     keka_token = get_keka_token()
 
