@@ -66,8 +66,8 @@ def main():
         "timestamp": current_time,
         "attendanceLogSource": 1,
         #"locationAddress": None,
-        "locationAddress": "14.142.158.178";
-        # CHN 14.142.158.178/29, 182.72.221.234/29, 182.73.9.242/29
+        "locationAddress": "14.142.158.178/29";
+        # CHN 14.142.158.178/29, 182.72.221.234/29, 182.73.9.242/29 14.142.158.181
         # PUNE 49.248.201.26/29, 115.117.115.26/29
         # BNGLR 14.142.172.194/29, 182.156.246.154/29
         "manualClockinType": 1,
@@ -95,5 +95,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
