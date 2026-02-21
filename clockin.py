@@ -90,12 +90,14 @@ def main():
     else:
         print(f"Clock-in failed!")
         print(response.status_code)
+        print(response.text)
         send_telegram_notification('❌ Clock-in failed!')  # Send failure notification
 
 
 
 if __name__ == "__main__":
     main()
+
 
 
 
