@@ -89,12 +89,14 @@ def main():
         make_phone_call()  #Telegram Phone call using CallMeBot
     else:
         print(f"Clock-in failed!")
+        print(response.status_code)
         send_telegram_notification('❌ Clock-in failed!')  # Send failure notification
 
 
 
 if __name__ == "__main__":
     main()
+
 
 
 
