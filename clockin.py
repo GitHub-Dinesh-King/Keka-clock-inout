@@ -83,6 +83,7 @@ def main():
     if response.status_code == 200:
         print("Clock-in successful!")
         print(response.text)
+        print(response.json())
         send_telegram_notification('✅ Clock-in successful!')  # Send success notification
     elif response.status_code == 401:
         print(f"Token Expired - Clock-in failed!")
@@ -98,6 +99,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
