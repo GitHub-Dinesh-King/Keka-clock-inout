@@ -29,7 +29,7 @@ def main():
                         "longitude": None,
                         "freeFormAddress": "\r\n\r\n\r\n\r\n\r\n"
                         },
-    "hasAddress": True,
+        "hasAddress": True,
         "ipAddress": "14.142.158.178",
         "manualClockinType": 1,
         "note": "",
