@@ -43,7 +43,7 @@ def main():
         "originalPunchStatus": 0,
         "timestamp": current_time,
         "premiseId": 0,
-        "premiseName": "Remote Clock In",
+        "premiseName": "Web Clock In",
         "pairSubSequentLogs": False,
     }
 
