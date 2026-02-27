@@ -23,9 +23,5 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Run WebClockIn script
-        run: python WebClockIn.py
-        env:
-          KEKA_TOKEN: ${{secrets.KEKA_TOKEN}}
-          TELEGRAM_BOT_TOKEN: ${{secrets.TELEGRAM_BOT_TOKEN}}
-          TELEGRAM_CHAT_ID: ${{secrets.TELEGRAM_CHAT_ID}}
+      - name: Run webclockin script
+        run: python webclockin.py
