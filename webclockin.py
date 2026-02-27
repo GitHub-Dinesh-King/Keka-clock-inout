@@ -16,6 +16,7 @@ def main():
     current_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
     payload = {
         "attendanceLogSource": 1,
+        "attendanceLogSourceIdentifier" : None,
         "locationAddress": {
             "geoLocationName": None,
             "addressLine1": None,
@@ -32,7 +33,13 @@ def main():
         "hasAddress": True,
         "ipAddress": "14.142.158.178",
         "manualClockinType": 1,
+        "isAdjusted" : False,
+        "isDeleted" : False,
+        "isManuallyAdded" : False,
         "note": "",
+        "attachment" : None,
+        "fileDetail" : None,
+        "attachmentId" : None,
         "originalPunchStatus": 0,
         "timestamp": current_time,
         "premiseId": 0,
