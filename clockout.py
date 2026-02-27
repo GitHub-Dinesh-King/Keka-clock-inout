@@ -2,8 +2,54 @@ import requests
 import datetime
 import os
 
+# Function to call Secret_keys
+def get_keka_token():
+    return os.getenv('KEKA_TOKEN')
+
+def get_telegram_bot_token():
+    return os.getenv('TELEGRAM_BOT_TOKEN')
+
+def get_telegram_chat_id():
+    return os.getenv('TELEGRAM_CHAT_ID')
+
+# Function to send Telegram notification
+def send_telegram_notification(message):
+    
+    telegram_bot_token = get_telegram_bot_token()
+    telegram_chat_id = get_telegram_chat_id()
+    
+    url = f'https://api.telegram.org/bot{telegram_bot_token}/sendMessage'
+    payload = {
+        'chat_id': telegram_chat_id,
+        'text': message
+    }
+
+    response = requests.post(url, data=payload)
+
+    if response.status_code == 200:
+        print(f"Notification sent: {message}")
+    else:
+        print(f"Failed to send notification. Status code: {response.status_code}")
+
+def make_phone_call():
+    username = "@thesunlord"
+    cc = "Keka+Token+Expired" #Telegram Message if call is Missed or Rejected   
+    call_url = (
+        f"http://api.callmebot.com/start.php?"
+        f"user={username}&text=Hi+Boss+the+Keka+Token+is+Expired&lang=en-US-Standard-A&rpt=1"
+    )
+    
+    response = requests.get(call_url)
+    print(f"Calling URL:", call_url)
+    print(f"Telegram Call Response:", response.text)
+    try:
+        print(f"Telegram Call Response:", response.status_code)
+    except Exception as e:
+        print(f"Unable to get the Status code of Telegram Call Response")
+        
+
 def main():
-    keka_token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFBRjQzNjk5RUE0NDlDNkNCRUU3NDZFMjhDODM5NUIyMEE0MUNFMTgiLCJ4NXQiOiJHdlEybWVwRW5HeS01MGJpaklPVnNncEJ6aGciLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FwcC5rZWthLmNvbSIsIm5iZiI6MTc3MjE3OTA4NiwiaWF0IjoxNzcyMTc5MDg2LCJleHAiOjE3NzIyNjU0ODYsImF1ZCI6WyJrZWthaHIuYXBpIiwiaGlyby5hcGkiLCJodHRwczovL2FwcC5rZWthLmNvbS9yZXNvdXJjZXMiXSwic2NvcGUiOlsib3BlbmlkIiwia2VrYWhyLmFwaSIsImhpcm8uYXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImV4dGVybmFsIl0sImNsaWVudF9pZCI6Ijk4N2NjOTcxLWZjMjItNDQ1NC05OWY5LTE2YzA3OGZhN2ZmNiIsInN1YiI6IjE5ZWI2NTg0LWYyOTgtNDk3Yi05MjQyLTE5YTg2ZTVlZWRmMiIsImF1dGhfdGltZSI6MTc3MTY3Nzc2NiwiaWRwIjoiT2ZmaWNlMzY1IiwidGVuYW50X2lkIjoiZTJiMDI0NDMtOTRmNC00ZWY1LWI5YTQtZjJlZGNmMzhlNDFjIiwidGVuYW50aWQiOiJlMmIwMjQ0My05NGY0LTRlZjUtYjlhNC1mMmVkY2YzOGU0MWMiLCJzdWJkb21haW4iOiJtYXZlcmljLmtla2EuY29tIiwidXNlcl9pZCI6IjE5YjQxOTNiLWI2N2EtNDUyYi04NDYzLTM5MTdiYWNmYmM5MyIsInVzZXJfaWRlbnRpZmllciI6IjE5YjQxOTNiLWI2N2EtNDUyYi04NDYzLTM5MTdiYWNmYmM5MyIsInVzZXJuYW1lIjoiZGluZXNockBtYXZlcmljLXN5c3RlbXMuY29tIiwiZW1haWwiOiJkaW5lc2hyQG1hdmVyaWMtc3lzdGVtcy5jb20iLCJhdXRoZW50aWNhdGlvbl90eXBlIjoiMiIsInNpZCI6IkRCRERFREQxMDcwMjQ3NUJBOTU5RTM4RUZFRDgzQjkzIiwianRpIjoiN0JGNDM3MTYzQ0FCRTM1NDE0QzQ0M0UzNDVERjY3MUQifQ.iQqj33sk267AsSUuPiweLs2IGdmRO1nOQ4zd-msuseX2dcaSVgdZ9apK2Rcbv_4l0nDpBoeoKWz2WAEAFxlOa23cdE-oD3Dpi1HVJKV8apTaC-RnjG5W-40ooGXoZW_4EiOq80SOY3F4KE5kQlvvrwnAhMJJ_XBW4SYAEpzjZ_xxMUnWWt4p2FF33zt_QVemSrjRcqG1CQVv_D1v5LgRQENucrNELEyI807-1DpqV7VKNXIjHvr3HkCPc_1isY5M2n71vTPqQQVr-iHoBiq_oUNmIMVtbcIuc1RHrIk-ZaDkzAz78DG_mq0qyrjpVdxmzxS3uN1AZlmVIxW4nQdXuA"
+    keka_token = get_keka_token()
 
     url = "https://maveric.keka.com/k/attendance/api/mytime/attendance/webclockin"
     headers = {
@@ -15,51 +61,30 @@ def main():
 
     current_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
     payload = {
+        "timestamp": current_time,
         "attendanceLogSource": 1,
-        "locationAddress": {
-                        "geoLocationName": None,
-                        "addressLine1": None,
-                        "addressLine2": None,
-                        "countryCode": None,
-                        "city": None,
-                        "state": None,
-                        "stateName": None,
-                        "zip": None,
-                        "latitude": None,
-                        "longitude": None,
-                        "freeFormAddress": "\r\n\r\n\r\n\r\n\r\n"
-                        },
-        "hasAddress": True,
-        "ipAddress": "14.142.158.178",
+        "locationAddress": None,
         "manualClockinType": 1,
         "note": "",
-        "originalPunchStatus": 0,
-        "timestamp": current_time,
-        "premiseId": 0,
-        "premiseName": "Web Clock In",
-        "pairSubSequentLogs": False,
+        "originalPunchStatus": 1
     }
 
     response = requests.post(url, headers=headers, json=payload)
     print(f"Clocked Status code: {response.status_code}")
     #print(f"Response Text: Clocked In")
-
+    
     # Check the response status and send Telegram notification
     if response.status_code == 200:
-        print("Clock-in successful!")
-        print(response.text)
-        print(response.json())
-            
+        print("Clock-out successful!")
+        send_telegram_notification('✅ Clock-out successful!')  # Send success notification
     elif response.status_code == 401:
-        print(f"Token Expired - Clock-in failed!")
-        print(response.text)
-        print(response.json())
-
+        print(f"Token Expired - Clock-out failed!")
+        send_telegram_notification('🔒 Keka Token Expired!')  # Send keka token expired notification
+        make_phone_call()
     else:
-        print(f"Clock-in failed!")
-        print(response.status_code)
-        print(response.text)
-        print(response.json())
+        print(f"Clock-out failed!")
+        send_telegram_notification('❌ Clock-out failed!')  # Send failure notification
+
 
 
 if __name__ == "__main__":
