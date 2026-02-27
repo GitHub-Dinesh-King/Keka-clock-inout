@@ -49,7 +49,7 @@ def main():
         print("Clock-in successful!")
         print(response.text)
         print(response.json())
-            
+
     elif response.status_code == 401:
         print(f"Token Expired - Clock-in failed!")
         print(response.text)
@@ -60,7 +60,6 @@ def main():
         print(response.status_code)
         print(response.text)
         print(response.json())
-
 
 if __name__ == "__main__":
     main()
