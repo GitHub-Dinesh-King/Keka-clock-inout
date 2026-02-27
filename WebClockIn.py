@@ -34,8 +34,8 @@ def main():
         "manualClockinType": 1,
         "note": "",
         "originalPunchStatus": 0,
-    "timestamp": current_time,
-    "premiseId": 0,
+        "timestamp": current_time,
+        "premiseId": 0,
         "premiseName": "Web Clock In",
         "pairSubSequentLogs": False,
     }
